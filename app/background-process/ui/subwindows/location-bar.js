@@ -96,14 +96,6 @@ export function hide (parentWindow) {
 export async function runCmd (parentWindow, cmd, opts) {
   var win = get(parentWindow)
   if (win) {
-    if (!win.isVisible()) {
-      if (cmd === 'set-value') {
-        // show first
-        show(parentWindow, opts)
-      } else {
-        return
-      }
-    }
     return win.webContents.executeJavaScript(`command("${cmd}", ${JSON.stringify(opts)})`)
   }
 }
